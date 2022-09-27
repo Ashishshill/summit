@@ -8,6 +8,7 @@ const postRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categories");
 const multer = require("multer");
 const path = require("path");
+const cors = require('cors')
 
 dotenv.config();
 app.use(express.json());
@@ -22,6 +23,8 @@ mongoose
   })
   .then(console.log("Connected to MongoDB"))
   .catch((err) => console.log(err));
+  
+  app.use(cors())
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
